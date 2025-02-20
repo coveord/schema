@@ -412,7 +412,7 @@ class Schema(object):
                 return str(value)
 
             def _to_schema(s: Any, ignore_extra_keys: bool) -> Schema:
-                if not isinstance(s, Schema):
+                if isinstance(s, (Or, And)) or not isinstance(s, Schema):
                     return Schema(s, ignore_extra_keys=ignore_extra_keys)
 
                 return s
