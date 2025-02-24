@@ -473,7 +473,7 @@ class Schema(object):
                         if len(or_values) == 1:
                             or_value = or_values[0]
                             if or_value is None:
-                                return_schema["type"] = None
+                                return_schema["type"] = "null"
                             else:
                                 return_schema["const"] = _to_json_type(or_value)
                             return return_schema
@@ -508,7 +508,7 @@ class Schema(object):
                         return_schema["allOf"] = all_of_values
                 elif flavor == COMPARABLE:
                     if s is None:
-                        return_schema["type"] = None
+                        return_schema["type"] = "null"
                     else:
                         return_schema["const"] = _to_json_type(s)
                 elif flavor == VALIDATOR and type(s) == Regex:
